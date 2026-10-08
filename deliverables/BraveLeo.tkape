@@ -1,0 +1,22 @@
+Description: Brave Browser + Leo AI assistant — per-user install; AIChat SQLite (conversation) + plaintext memories
+Author: Saksham Tushar (c0c0n 2026 - The AI Browser Blind Spot)
+Version: 1.0
+Id: 26070BF6-76A6-4DA7-A41B-111C3338184D
+RecreateDirectories: true
+Targets:
+    - Name: Brave Local State (v10 OSCrypt key; NO App-Bound Encryption -> dead-box decryptable)
+      Category: BrowserHistory
+      Path: C:\Users\%user%\AppData\Local\BraveSoftware\Brave-Browser\User Data\
+      FileMask: Local State
+    - Name: Brave Leo AIChat SQLite (conversation; entry_text v10-encrypted, timeline/model cleartext)
+      Category: BrowserHistory
+      Path: C:\Users\%user%\AppData\Local\BraveSoftware\Brave-Browser\User Data\*\
+      FileMask: AIChat*
+    - Name: Brave Preferences (brave.ai_chat.user_memories = PLAINTEXT memories; p3a usage counters)
+      Category: BrowserHistory
+      Path: C:\Users\%user%\AppData\Local\BraveSoftware\Brave-Browser\User Data\*\
+      FileMask: '*Preferences'
+    - Name: Brave core DBs (History, Cookies v10, Login/Web Data, Local/Session Storage, IndexedDB, Sessions, Extensions)
+      Category: BrowserHistory
+      Path: C:\Users\%user%\AppData\Local\BraveSoftware\Brave-Browser\User Data\*\
+      Recursive: true

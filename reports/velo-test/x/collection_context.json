@@ -1,0 +1,62 @@
+{
+ "session_id": "F.DB3LO2CIN2F68",
+ "request": {
+  "artifacts": [
+   "Custom.Windows.Applications.AIBrowsers"
+  ],
+  "specs": [
+   {
+    "artifact": "Custom.Windows.Applications.AIBrowsers",
+    "parameters": {
+     "env": [
+      {
+       "key": "UploadArtifacts",
+       "value": "Y"
+      }
+     ]
+    }
+   }
+  ],
+  "max_upload_bytes": 1073741824
+ },
+ "create_time": 1791450121406778300,
+ "total_uploaded_files": 98,
+ "total_expected_uploaded_bytes": 18832445,
+ "total_uploaded_bytes": 18832445,
+ "total_collected_rows": 98,
+ "total_logs": 118,
+ "total_requests": 1,
+ "execution_duration": 954337600,
+ "state": 2,
+ "artifacts_with_results": [
+  "Custom.Windows.Applications.AIBrowsers/InstalledAIBrowsers",
+  "Custom.Windows.Applications.AIBrowsers/CometUpdaterLog",
+  "Custom.Windows.Applications.AIBrowsers/CometPromptCache",
+  "Custom.Windows.Applications.AIBrowsers/BraveLeoAIChat",
+  "Custom.Windows.Applications.AIBrowsers/BraveLeoMemories",
+  "Custom.Windows.Applications.AIBrowsers/AIExtensionsInstalled",
+  "Custom.Windows.Applications.AIBrowsers/AIExtensionStores",
+  "Custom.Windows.Applications.AIBrowsers/NativeMessagingHosts",
+  "Custom.Windows.Applications.AIBrowsers/HistoryFromApiVisits",
+  "Custom.Windows.Applications.AIBrowsers/Uploads"
+ ],
+ "query_stats": [
+  {
+   "duration": 954337600,
+   "names_with_response": [
+    "Custom.Windows.Applications.AIBrowsers/InstalledAIBrowsers",
+    "Custom.Windows.Applications.AIBrowsers/CometUpdaterLog",
+    "Custom.Windows.Applications.AIBrowsers/CometPromptCache",
+    "Custom.Windows.Applications.AIBrowsers/BraveLeoAIChat",
+    "Custom.Windows.Applications.AIBrowsers/BraveLeoMemories",
+    "Custom.Windows.Applications.AIBrowsers/AIExtensionsInstalled",
+    "Custom.Windows.Applications.AIBrowsers/AIExtensionStores",
+    "Custom.Windows.Applications.AIBrowsers/NativeMessagingHosts",
+    "Custom.Windows.Applications.AIBrowsers/HistoryFromApiVisits",
+    "Custom.Windows.Applications.AIBrowsers/Uploads"
+   ],
+   "log_rows": 118,
+   "result_rows": 98
+  }
+ ]
+}

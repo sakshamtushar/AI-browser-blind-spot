@@ -1,0 +1,13 @@
+collections/
+artifacts/comet-crx/
+www/form-log.txt
+www/access-log.txt
+*.zip
+*.hive
+*.dat
+*.ldb
+*.log
+.venv/
+__pycache__/
+*.pyc
+.DS_Store

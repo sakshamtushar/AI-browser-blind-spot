@@ -1,0 +1,17 @@
+$ ls ~/Library/Application\ Support/Google/Chrome/Default/Storage/ext/glic/
+66A834677761
+$ echo -n glicpart | shasum -a 256 | cut -c1-12
+66A834677761
+$ ls ~/…/glic/66A834677761/
+Cookies
+Cookies-journal
+DawnGraphiteCache
+DawnWebGPUCache
+GPUCache
+Local Storage
+Network Persistent State
+Platform Notifications
+Reporting and NEL
+Reporting and NEL-journal
+Session Storage
+Shared Dictionary

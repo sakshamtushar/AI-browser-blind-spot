@@ -1,0 +1,7 @@
+PS> Get-WinEvent Sysmon/Operational, EventID 1 (process create)   # live, thorhq-windows, 26 Sep 2026 (UTC)
+06:25:19  chrome.exe  <- explorer.exe                                   (user launch, interactive session)
+07:24:26  cmd.exe     <- sshd.exe
+07:24:26  cmd.exe     <- cmd.exe    cmd /c start "" "...\Comet\Application\comet.exe" --remote-debugging-port=9222 --no-first-run about:blank
+07:24:27  comet.exe   <- comet.exe  --type=crashpad-handler ...
+07:24:30  comet.exe   <- comet.exe  --type=renderer ...   (x8)
+NOTE: no EventID 1 for the top-level comet.exe itself in this window; Elastic Defend recorded the equivalent start on 20 Sep.

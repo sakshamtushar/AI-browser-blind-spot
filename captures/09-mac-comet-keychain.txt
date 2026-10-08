@@ -1,0 +1,5 @@
+$ security find-generic-password -s "Comet Safe Storage"   # attributes only, no secret
+keychain: "/Users/<user>/Library/Keychains/login.keychain-db"
+    "acct"<blob>="Comet"
+    "cdat"<timedate>=0x32303235313031363134353132385A00  "20251016145128Z\000"
+    "svce"<blob>="Comet Safe Storage"

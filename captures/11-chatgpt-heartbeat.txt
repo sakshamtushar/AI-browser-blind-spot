@@ -1,0 +1,5 @@
+$ ccl_leveldb  "Local Extension Settings/hehggadaopoacecdllhhajmbjkdcmajg"
+key NATIVE_HOST_STATUS   records : 18,848   (live + superseded)
+hostName                          : com.openai.codexextension
+lastChecked  first / last (UTC)   : 2026-05-26 00:54:25  →  2026-07-06 07:55:57
+other keys (names only)           : TAB_GROUPS, codexToolbarStateLastSnapshot, codexToolbarStateTelemetryId, extensionInstanceId, lastSeenExtensionActionCalloutVersion

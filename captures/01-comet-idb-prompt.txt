@@ -1,0 +1,19 @@
+keyval-store                        query_str     = Remember that my project codename is C0C0-CANARY-COMET-02
+keyval-store                        thread_title  = Remember that my project codename is C0C0-CANARY-COMET-02
+keyval-store                        backend_uuid  = 3e3e71d3-4cdc-4e5b-ad7d-157b9b210a4b
+keyval-store                        backend_uuid  = a9f6ab11-84a1-4133-ba43-84bae10f37bb
+Traceback (most recent call last):
+  File "<stdin>", line 9, in <module>
+  File "/Users/<user>/Documents/Projects/trainging_talks/Ai Browser Dissection - Talk - Cocoon/research/lab/.venv/lib/python3.14/site-packages/ccl_chromium_reader/ccl_chromium_indexeddb.py", line 842, in iterate_records
+    yield from self._raw_db.iterate_records(
+        self._dbid_no, self._obj_store_id, live_only=live_only,
+        bad_deserializer_data_handler=handler)
+  File "/Users/<user>/Documents/Projects/trainging_talks/Ai Browser Dissection - Talk - Cocoon/research/lab/.venv/lib/python3.14/site-packages/ccl_chromium_reader/ccl_chromium_indexeddb.py", line 628, in iterate_records
+    precursor = self.read_record_precursor(
+        key, db_id, store_id, record.value[val_idx:], bad_deserializer_data_handler)
+  File "/Users/<user>/Documents/Projects/trainging_talks/Ai Browser Dissection - Talk - Cocoon/research/lab/.venv/lib/python3.14/site-packages/ccl_chromium_reader/ccl_chromium_indexeddb.py", line 577, in read_record_precursor
+    blob = self.get_blob(db_id, store_id, key.raw_key, externally_serialized_blob_index).read()
+           ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/<user>/Documents/Projects/trainging_talks/Ai Browser Dissection - Talk - Cocoon/research/lab/.venv/lib/python3.14/site-packages/ccl_chromium_reader/ccl_chromium_indexeddb.py", line 679, in get_blob
+    raise ValueError("Can't resolve blob if blob dir is not set")
+ValueError: Can't resolve blob if blob dir is not set

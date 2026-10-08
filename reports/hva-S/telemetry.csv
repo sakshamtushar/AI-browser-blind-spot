@@ -1,0 +1,4 @@
+run,actor,task,page,reason,canary,ms_on_page,first_interaction_ms,keys,keys_untrusted,pastes,inputs,pointer_moves,pointer_untrusted,clicks_trusted,clicks,moves_before_first_click,name_len,webdriver,focus_order
+S-T1-1,S,T1,/form-hva.html,submit,C0C0N-CANARY-HVA-S-T1-1,2117,2061,0,0,0,"{""insertText"": 3}",1,0,1,1,1,23,True,name>email>notes>BUTTON
+S-T1-2,S,T1,/form-hva.html,submit,C0C0N-CANARY-HVA-S-T1-2,6052,2039,0,0,0,"{""insertText"": 3}",1,0,1,1,1,23,True,name>email>notes>BUTTON
+S-T1-3,S,T1,/form-hva.html,submit,C0C0N-CANARY-HVA-S-T1-3,2166,2064,0,0,0,"{""insertText"": 3}",1,0,1,1,1,23,True,name>email>notes>BUTTON

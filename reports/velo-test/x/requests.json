@@ -1,0 +1,88 @@
+{
+ "items": [
+  {
+   "session_id": "F.DB3LO2CIN2F68",
+   "request_id": 1,
+   "VQLClientAction": {
+    "query_id": 1,
+    "total_queries": 1,
+    "env": [
+     {
+      "key": "UploadArtifacts",
+      "value": "Y"
+     },
+     {
+      "key": "UserDataGlobs",
+      "value": "Glob\nC:/Users/*/AppData/Local/Perplexity/Comet/User Data\nC:/Users/*/AppData/Local/BraveSoftware/Brave-Browser/User Data\nC:/Users/*/AppData/Local/Google/Chrome/User Data\nC:/Users/*/AppData/Local/Microsoft/Edge/User Data\n"
+     },
+     {
+      "key": "AIExtensionIds",
+      "value": "Id,Name\nfcoeoabgfenejglbffodgkkbkcdhcgfn,Claude in Chrome\nhehggadaopoacecdllhhajmbjkdcmajg,ChatGPT (OpenAI)\nmcjlamohcooanphmebaiigheeeoplihb,Comet assistant (bundled)\nnpclhjbddhklpbnacpjloidibaggcgon,comet-agent (bundled)\nmjdcklhepheaaemphcopihnmjlmjpcnh,Comet Web Resources (bundled)\n"
+     }
+    ],
+    "Query": [
+     {
+      "VQL": "LET UploadArtifacts \u003c= get(field='UploadArtifacts') = TRUE OR get(field='UploadArtifacts') =~ '^(Y|TRUE|YES|OK)$' "
+     },
+     {
+      "VQL": "\nLET UserDataGlobs \u003c= SELECT * FROM if(\n    condition=format(format=\"%T\", args=[UserDataGlobs,]) =~ \"string\",\n    then={SELECT * FROM parse_csv(filename=UserDataGlobs, accessor='data')},\n    else=UserDataGlobs)\n"
+     },
+     {
+      "VQL": "\nLET AIExtensionIds \u003c= SELECT * FROM if(\n    condition=format(format=\"%T\", args=[AIExtensionIds,]) =~ \"string\",\n    then={SELECT * FROM parse_csv(filename=AIExtensionIds, accessor='data')},\n    else=AIExtensionIds)\n"
+     },
+     {
+      "Name": "Custom.Windows.Applications.AIBrowsers/InstalledAIBrowsers",
+      "VQL": "SELECT OSPath, Mtime, Size FROM glob(globs=UserDataGlobs.Glob)"
+     },
+     {
+      "Name": "Custom.Windows.Applications.AIBrowsers/CometUpdaterLog",
+      "VQL": "SELECT OSPath, Mtime, Size FROM glob(globs=\"C:/Program Files (x86)/Perplexity/CometUpdater/updater_history.jsonl\")"
+     },
+     {
+      "Name": "Custom.Windows.Applications.AIBrowsers/CometPromptCache",
+      "VQL": "SELECT OSPath, Mtime, Size FROM glob(globs=\"C:/Users/*/AppData/Local/Perplexity/Comet/User Data/*/IndexedDB/https_www.perplexity.ai_0.indexeddb.leveldb/*\")"
+     },
+     {
+      "Name": "Custom.Windows.Applications.AIBrowsers/BraveLeoAIChat",
+      "VQL": "SELECT OSPath, Mtime, Size FROM glob(globs=\"C:/Users/*/AppData/Local/BraveSoftware/Brave-Browser/User Data/*/AIChat\")"
+     },
+     {
+      "Name": "Custom.Windows.Applications.AIBrowsers/BraveLeoMemories",
+      "VQL": "SELECT OSPath, parse_json(data=read_file(filename=OSPath)).brave.ai_chat.user_memories AS Memories FROM glob(globs=\"C:/Users/*/AppData/Local/BraveSoftware/Brave-Browser/User Data/*/Preferences\")"
+     },
+     {
+      "Name": "Custom.Windows.Applications.AIBrowsers/AIExtensionsInstalled",
+      "VQL": "SELECT OSPath, Mtime, basename(path=OSPath) AS ExtensionId, { SELECT Name FROM AIExtensionIds WHERE Id = basename(path=OSPath) } AS Extension FROM glob(globs=\"C:/Users/*/AppData/Local/*/*/User Data/*/Extensions/*\") WHERE basename(path=OSPath) IN AIExtensionIds.Id"
+     },
+     {
+      "Name": "Custom.Windows.Applications.AIBrowsers/AIExtensionStores",
+      "VQL": "SELECT OSPath, Mtime, Size, basename(path=dirname(path=OSPath)) AS ExtensionId FROM glob(globs=\"C:/Users/*/AppData/Local/*/*/User Data/*/Local Extension Settings/*/*\") WHERE basename(path=dirname(path=OSPath)) IN AIExtensionIds.Id"
+     },
+     {
+      "Name": "Custom.Windows.Applications.AIBrowsers/GeminiGlicPartition",
+      "VQL": "SELECT OSPath, Mtime, Size FROM glob(globs=\"C:/Users/*/AppData/Local/Google/Chrome/User Data/*/Storage/ext/glic/**\")"
+     },
+     {
+      "VQL": "LET hosts = SELECT OSPath AS RegistryValue, Data.value AS Manifest FROM glob(accessor=\"registry\", globs=[\"HKEY_USERS/*/Software/Google/Chrome/NativeMessagingHosts/*/@\", \"HKEY_USERS/*/Software/BraveSoftware/Brave-Browser/NativeMessagingHosts/*/@\", \"HKEY_USERS/*/Software/Microsoft/Edge/NativeMessagingHosts/*/@\", \"HKEY_USERS/*/Software/Perplexity/Comet/NativeMessagingHosts/*/@\", \"HKEY_LOCAL_MACHINE/SOFTWARE/Google/Chrome/NativeMessagingHosts/*/@\", \"HKEY_LOCAL_MACHINE/SOFTWARE/WOW6432Node/Google/Chrome/NativeMessagingHosts/*/@\"])"
+     },
+     {
+      "Name": "Custom.Windows.Applications.AIBrowsers/NativeMessagingHosts",
+      "VQL": "SELECT RegistryValue, Manifest, parse_json(data=read_file(filename=Manifest)).name AS HostName, parse_json(data=read_file(filename=Manifest)).path AS BridgeBinary, parse_json(data=read_file(filename=Manifest)).allowed_origins AS AllowedExtensions FROM hosts"
+     },
+     {
+      "VQL": "LET histories = SELECT OSPath FROM glob(globs=\"C:/Users/*/AppData/Local/*/*/User Data/*/History\")"
+     },
+     {
+      "Name": "Custom.Windows.Applications.AIBrowsers/HistoryFromApiVisits",
+      "VQL": "SELECT * FROM foreach(row=histories, query={ SELECT OSPath AS HistoryFile, timestamp(winfiletime=visit_time * 10) AS VisitTime, Url, Title, format(format=\"0x%08X\", args=transition) AS Transition FROM sqlite(file=OSPath, query=\"SELECT v.visit_time, u.url AS Url, u.title AS Title, v.transition FROM visits v JOIN urls u ON u.id = v.url WHERE (v.transition \u0026 134217728) != 0 ORDER BY v.visit_time\") })"
+     },
+     {
+      "Name": "Custom.Windows.Applications.AIBrowsers/Uploads",
+      "VQL": "SELECT upload(file=OSPath) AS Upload FROM foreach(row={ SELECT OSPath FROM glob(globs=[\"C:/Users/*/AppData/Local/*/*/User Data/Local State\", \"C:/Users/*/AppData/Local/*/*/User Data/*/Preferences\", \"C:/Users/*/AppData/Local/*/*/User Data/*/Secure Preferences\", \"C:/Users/*/AppData/Local/*/*/User Data/*/History\", \"C:/Users/*/AppData/Local/*/*/User Data/*/Web Data\", \"C:/Users/*/AppData/Local/*/*/User Data/*/Sessions/*\", \"C:/Users/*/AppData/Local/*/*/User Data/*/AIChat\", \"C:/Users/*/AppData/Local/Perplexity/Comet/User Data/*/IndexedDB/https_www.perplexity.ai_0.indexeddb.leveldb/*\", \"C:/Users/*/AppData/Local/*/*/User Data/*/Local Extension Settings/{fcoeoabgfenejglbffodgkkbkcdhcgfn,hehggadaopoacecdllhhajmbjkdcmajg,mcjlamohcooanphmebaiigheeeoplihb,npclhjbddhklpbnacpjloidibaggcgon,mjdcklhepheaaemphcopihnmjlmjpcnh}/*\", \"C:/Users/*/AppData/Local/Google/Chrome/User Data/*/Storage/ext/glic/**\", \"C:/Program Files (x86)/Perplexity/CometUpdater/updater_history.jsonl\"]) }) WHERE UploadArtifacts"
+     }
+    ],
+    "max_row": 1000
+   }
+  }
+ ]
+}

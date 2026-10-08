@@ -1,0 +1,6 @@
+$ ls ~/Library/Application\ Support/Google/Chrome/NativeMessagingHosts/
+com.anthropic.claude_browser_extension.json
+com.anthropic.claude_code_browser_extension.json
+com.openai.codexextension.json
+com.perplexity.comet.json
+(non-AI hosts omitted)

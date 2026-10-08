@@ -1,0 +1,4 @@
+run,actor,task,visit_id,time,url,core,qualifiers,from_visit,opener_visit,duration_s,typed_count,visit_source,tab_id,task_id,parent_task_id,root_task_id,page_end_reason,foreground_s
+S-T1-1,S,T1,23,2026-10-06T17:52:20.304Z,http://192.168.1.14:8088/form-hva.html,TYPED,FROM_API|CHAIN_START|CHAIN_END,0,0,2.323,3,BROWSED (no row),63572056,13435782740304634,-1,13435782740304634,4,2.399
+S-T1-2,S,T1,25,2026-10-06T17:58:28.884Z,http://192.168.1.14:8088/form-hva.html,TYPED,FROM_API|CHAIN_START|CHAIN_END,0,0,6.199,3,BROWSED (no row),63572194,13435783108884006,-1,13435783108884006,4,
+S-T1-3,S,T1,27,2026-10-06T18:03:59.825Z,http://192.168.1.14:8088/form-hva.html,TYPED,FROM_API|CHAIN_START|CHAIN_END,0,0,2.275,3,BROWSED (no row),63572354,13435783439825553,-1,13435783439825553,4,2.302

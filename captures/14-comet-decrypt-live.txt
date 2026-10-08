@@ -1,0 +1,37 @@
+> python chromium_decrypt.py "%LOCALAPPDATA%\Perplexity\Comet\User Data" "Profile 1"  # live on thorhq-windows as thorh, 26 Sep 2026
+os_crypt keys: ['app_bound_encrypted_key', 'audit_enabled', 'encrypted_key']
+encrypted_key prefix: b'DPAPI'
+v10 AES key recovered via user-DPAPI: 32 bytes
+app_bound_encrypted_key present: True
+
+== Network/Cookies ==
+  www.perplexity.ai pplx.visitor-id [v20-APP-BOUND (needs elevation service)] = ''
+  .perplexity.ai cf_clearance [v20-APP-BOUND (needs elevation service)] = ''
+  accounts.google.com OTZ [v20-APP-BOUND (needs elevation service)] = ''
+  www.perplexity.ai next-auth.csrf-token [v20-APP-BOUND (needs elevation service)] = ''
+  accounts.google.com ACCOUNT_CHOOSER [v20-APP-BOUND (needs elevation service)] = ''
+  .google.com APISID [v20-APP-BOUND (needs elevation service)] = ''
+  www.perplexity.ai __Host-pplx-last-active-account [v20-APP-BOUND (needs elevation service)] = ''
+  .perplexity.ai singular_device_id [v20-APP-BOUND (needs elevation service)] = ''
+  .www.perplexity.ai __stripe_mid [v20-APP-BOUND (needs elevation service)] = ''
+  www.perplexity.ai pplx.metadata [v20-APP-BOUND (needs elevation service)] = ''
+  www.perplexity.ai pplx.visitor-ts [v20-APP-BOUND (needs elevation service)] = ''
+  .perplexity.ai pplx.edge-vid [v20-APP-BOUND (needs elevation service)] = ''
+  www.perplexity.ai _dd_s_v2 [v20-APP-BOUND (needs elevation service)] = ''
+  .perplexity.ai comet_browser [v20-APP-BOUND (needs elevation service)] = ''
+  .perplexity.com comet_browser [v20-APP-BOUND (needs elevation service)] = ''
+  www.perplexity.ai pplx.browser.always-allow-browser-agent [v20-APP-BOUND (needs elevation service)] = ''
+  www.perplexity.ai pplx.browser.device-id [v20-APP-BOUND (needs elevation service)] = ''
+  www.perplexity.ai pplx.browser.is-local-search-enabled [v20-APP-BOUND (needs elevation service)] = ''
+  www.perplexity.ai pplx.browser.temporary-threads-enabled [v20-APP-BOUND (needs elevation service)] = ''
+  .perplexity.ai pplx.trackingAllowed [v20-APP-BOUND (needs elevation service)] = ''
+  .perplexity.com pplx.trackingAllowed [v20-APP-BOUND (needs elevation service)] = ''
+  www.perplexity.ai __Secure-next-auth.session-token [v20-APP-BOUND (needs elevation service)] = ''
+  www.perplexity.ai __Secure-pplx.session.5ac72fd8-2bf7-4930-87fe-34d612616c8c [v20-APP-BOUND (needs elevation service)] = ''
+  www.perplexity.ai colorScheme [v20-APP-BOUND (needs elevation service)] = ''
+  www.perplexity.ai colorSchemeTheme [v20-APP-BOUND (needs elevation service)] = ''
+  www.perplexity.ai __cflb [v20-APP-BOUND (needs elevation service)] = ''
+  .perplexity.ai __cf_bm [v20-APP-BOUND (needs elevation service)] = ''
+  totals: 79 cookies, v10-decrypted=0, v20-appbound=79
+
+== Login Data ==

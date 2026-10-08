@@ -1,0 +1,19 @@
+> python chromium_decrypt.py "%LOCALAPPDATA%\BraveSoftware\Brave-Browser\User Data" Default  # live on thorhq-windows as thorh, 26 Sep 2026
+os_crypt keys: ['audit_enabled', 'encrypted_key']
+encrypted_key prefix: b'DPAPI'
+v10 AES key recovered via user-DPAPI: 32 bytes
+app_bound_encrypted_key present: False
+
+== Network/Cookies ==
+  totals: 0 cookies, v10-decrypted=0, v20-appbound=0
+
+== Login Data ==
+
+== AIChat conversation_entry (decrypted) ==
+  HUMAN model=None [v10] text='What is C0C0N-CANARY-BRAVE-01?'
+  ASSISTANT model=chat-qwen [v10] text='I don\'t have specific information about **"C0C0N-CANARY-BRAVE-01"** in my training data (which ends in October 2024), and it doesn\'t appear to be a standard or widely known term in the context of Brav'
+  HUMAN model=None [v10] text='summarize http://192.168.1.14:8088/canary-BRAVE-01.html'
+  ASSISTANT model=chat-qwen [v10] text='I cannot access local network addresses like `http://192.168.1.14:8088/` because:\n\n1. **Security restriction**: As a browser assistant, I cannot browse arbitrary local IP addresses or ports (this is a'
+
+== AIChat conversation titles ==
+  [v10] 'C0C0N CANARY BRAVE Device Information'

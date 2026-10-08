@@ -1,0 +1,8 @@
+$ sqlite3 "Brave-Browser/User Data/Default/AIChat" \
+    "select date, character_type, model_key, hex(substr(entry_text,1,12)) from conversation_entry"
+date_utc             who        model_key  entry_text_head         
+-------------------  ---------  ---------  ------------------------
+2026-09-20 07:59:55  human                 763130004BB8D5134746A30B
+2026-09-20 08:00:01  assistant  chat-qwen  76313068FCD4D5340677CBC1
+2026-09-20 08:01:00  human                 7631303F15F577874F472111
+2026-09-20 08:01:02  assistant  chat-qwen  763130E67A103D624C143C0B

@@ -1,0 +1,3 @@
+$ ls ~/Library/LaunchAgents | grep -i atlas ; ls /Applications | grep -i atlas
+com.openai.atlas.update-helper.plist
+(no Atlas.app in /Applications)

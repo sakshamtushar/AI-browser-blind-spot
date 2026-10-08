@@ -1,0 +1,27 @@
+run,actor,task,file,kind,session_id,index,time,url,core,qualifiers,has_post_data,ua_override,task_id,root_task_id,detail
+,,,Session_13435837753059848,CommandSetTabGroup,,,,,,,,,,,offset 211
+CP-T1-3,CP,T1,Session_13435837753059848,navigation,947668078,1,2026-10-07T09:09:20.675Z,http://thorhq-windows:8088/form-hva.html,TYPED,FROM_ADDRESS_BAR,False,False,-1,-1,
+CP-T1-3,CP,T1,Session_13435837753059848,navigation,947668078,1,2026-10-07T09:09:20.675Z,http://thorhq-windows:8088/form-hva.html,TYPED,FROM_ADDRESS_BAR,False,False,13435837760675403,13435837760675403,
+CP-T1-3,CP,T1,Session_13435837753059848,navigation,947668078,1,2026-10-07T09:09:20.675Z,http://thorhq-windows:8088/form-hva.html,TYPED,FROM_ADDRESS_BAR,False,False,13435837760675403,13435837760675403,
+CP-T1-3,CP,T1,Session_13435837753059848,navigation,947668078,1,2026-10-07T09:09:20.675Z,http://thorhq-windows:8088/form-hva.html,TYPED,FROM_ADDRESS_BAR,False,False,13435837760675403,13435837760675403,
+,,,Session_13435837981983827,CommandSetTabGroup,,,,,,,,,,,offset 211
+,,,Session_13435837981983827,CommandSetTabGroup,,,,,,,,,,,offset 2780
+,,,Session_13435837981983827,CommandSetTabGroupMetadata2,,,,,,,,,,,offset 2815
+,,,Session_13435837981983827,CommandSetTabGroupMetadata2,,,,,,,,,,,offset 2854
+,,,Session_13435837981983827,CommandSetTabGroupMetadata2,,,,,,,,,,,offset 2933
+,,,Session_13435837981983827,CommandSetTabGroup,,,,,,,,,,,offset 12323
+,,,Session_13435837981983827,CommandSetTabGroupMetadata2,,,,,,,,,,,offset 12358
+,,,Session_13435837981983827,CommandSetTabGroup,,,,,,,,,,,offset 12409
+,,,Session_13435837981983827,CommandSetTabGroupMetadata2,,,,,,,,,,,offset 12444
+,,,Session_13435837981983827,CommandSetTabGroupMetadata2,,,,,,,,,,,offset 12483
+,,,Session_13435837981983827,CommandSetTabGroupMetadata2,,,,,,,,,,,offset 12562
+,,,Session_13435837981983827,CommandSetTabGroupMetadata2,,,,,,,,,,,offset 12687
+,,,Session_13435837981983827,navigation,947668085,1,2026-10-07T09:13:31.079Z,http://thorhq-windows:8088/form-hva.html,LINK,FROM_API,False,False,-1,-1,
+,,,Session_13435837981983827,navigation,947668085,1,2026-10-07T09:13:31.079Z,http://thorhq-windows:8088/form-hva.html,LINK,FROM_API,False,False,13435838011079149,13435837979571803,
+,,,Session_13435837981983827,CommandSetTabGroupMetadata2,,,,,,,,,,,offset 18396
+CP-T1-1,CP,T1,Tabs_13435781822862874,navigation,947668031,1,2026-10-07T08:41:11.121Z,http://thorhq-windows:8088/form-hva.html,TYPED,FROM_ADDRESS_BAR,False,False,13435836071121410,13435836071121410,
+CA-T1-1,CA,T1,Tabs_13435781822862874,navigation,947668058,1,2026-10-07T08:50:36.756Z,http://thorhq-windows:8088/form-hva.html,LINK,FROM_API,False,False,13435836636756347,13435836259630515,
+CP-T1-2,CP,T1,Tabs_13435781822862874,navigation,947668068,1,2026-10-07T08:59:08.827Z,http://thorhq-windows:8088/form-hva.html,TYPED,FROM_ADDRESS_BAR,False,False,13435837148827700,13435837148827700,
+CA-T1-2,CA,T1,Tabs_13435781822862874,navigation,947668075,1,2026-10-07T09:04:33.914Z,http://thorhq-windows:8088/form-hva.html,LINK,FROM_API,False,False,13435837473914555,13435837455002616,
+CP-T1-3,CP,T1,Tabs_13435781822862874,navigation,947668083,1,2026-10-07T09:09:20.675Z,http://thorhq-windows:8088/form-hva.html,TYPED,FROM_ADDRESS_BAR,False,False,13435837760675403,13435837760675403,
+,,,Tabs_13435781822862874,navigation,947668090,1,2026-10-07T09:13:31.079Z,http://thorhq-windows:8088/form-hva.html,LINK,FROM_API,False,False,13435838011079149,13435837979571803,

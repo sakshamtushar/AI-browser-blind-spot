@@ -1,0 +1,29 @@
+$ ccl_leveldb "Local Extension Settings/fcoeoabgfenejglbffodgkkbkcdhcgfn"  key=permissionStorage
+versions of this key still on disk : 1
+{
+ "permissions": [
+  {
+   "action": "allow",
+   "createdAt": 1775908040717.0,
+   "duration": "always",
+   "id": "<str>",
+   "lastUsed": 1775908048950.0,
+   "scope": {
+    "netloc": "<domain>",
+    "type": "netloc"
+   }
+  },
+  {
+   "action": "allow",
+   "createdAt": 1785501877117.0,
+   "duration": "always",
+   "id": "<str>",
+   "lastUsed": 1785502021750.0,
+   "scope": {
+    "netloc": "<domain>",
+    "type": "netloc"
+   }
+  },
+  "\u2026 +5 more"
+ ]
+}

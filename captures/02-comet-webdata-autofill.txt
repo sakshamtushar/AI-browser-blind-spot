@@ -1,0 +1,2 @@
+name|C0C0N-CANARY-COMET-04|2026-09-20 07:56:53|1
+email|comet04@lab.local|2026-09-20 07:56:53|1

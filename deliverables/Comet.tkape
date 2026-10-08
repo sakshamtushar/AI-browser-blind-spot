@@ -1,0 +1,82 @@
+Description: Perplexity Comet (Chromium AI browser) — user data, AI conversation residue, hidden agent extensions, updater forensic log
+Author: Saksham Tushar (c0c0n 2026 - The AI Browser Blind Spot)
+Version: 1.0
+Id: AFFFF3D9-88E2-4110-B87E-33103FBEA7F3
+RecreateDirectories: true
+Targets:
+    - Name: Comet Local State (OSCrypt/ABE keys, profile.info_cache, perplexity.* prefs)
+      Category: BrowserHistory
+      Path: C:\Users\%user%\AppData\Local\Perplexity\Comet\User Data\
+      FileMask: Local State
+    - Name: Comet piid / consent / metrics (install UUID, Consent To Send Stats)
+      Category: BrowserHistory
+      Path: C:\Users\%user%\AppData\Local\Perplexity\Comet\User Data\
+      FileMask: piid
+    - Name: Comet profile core DBs (all profiles)
+      Category: BrowserHistory
+      Path: C:\Users\%user%\AppData\Local\Perplexity\Comet\User Data\*\
+      FileMask: History*
+    - Name: Comet Cookies (v20 App-Bound; needs live elevation service to decrypt)
+      Category: BrowserHistory
+      Path: C:\Users\%user%\AppData\Local\Perplexity\Comet\User Data\*\Network\
+      FileMask: Cookies*
+    - Name: Comet Login Data / Web Data (autofill incl. agent-submitted form values)
+      Category: BrowserHistory
+      Path: C:\Users\%user%\AppData\Local\Perplexity\Comet\User Data\*\
+      FileMask: 'Login Data*'
+    - Name: Comet Web Data
+      Category: BrowserHistory
+      Path: C:\Users\%user%\AppData\Local\Perplexity\Comet\User Data\*\
+      FileMask: 'Web Data*'
+    - Name: Comet Preferences / Secure Preferences (perplexity.adblock, content settings, ext registry)
+      Category: BrowserHistory
+      Path: C:\Users\%user%\AppData\Local\Perplexity\Comet\User Data\*\
+      FileMask: '*Preferences'
+    - Name: Comet Local Storage (assistant query text residue)
+      Category: BrowserHistory
+      Path: C:\Users\%user%\AppData\Local\Perplexity\Comet\User Data\*\Local Storage\leveldb\
+      Recursive: true
+    - Name: Comet Session Storage
+      Category: BrowserHistory
+      Path: C:\Users\%user%\AppData\Local\Perplexity\Comet\User Data\*\Session Storage\
+      Recursive: true
+    - Name: Comet IndexedDB (perplexity.ai prompt/thread cache incl. account-UUID DB names)
+      Category: BrowserHistory
+      Path: C:\Users\%user%\AppData\Local\Perplexity\Comet\User Data\*\IndexedDB\
+      Recursive: true
+    - Name: Comet Sessions (SNSS tab/nav incl. OAuth URLs)
+      Category: BrowserHistory
+      Path: C:\Users\%user%\AppData\Local\Perplexity\Comet\User Data\*\Sessions\
+      Recursive: true
+    - Name: Comet Storage partitions (built-in AI surfaces, hash-named)
+      Category: BrowserHistory
+      Path: C:\Users\%user%\AppData\Local\Perplexity\Comet\User Data\*\Storage\ext\
+      Recursive: true
+    - Name: Comet Local/Sync/Managed Extension Settings (comet-agent, blocklists, config)
+      Category: BrowserHistory
+      Path: C:\Users\%user%\AppData\Local\Perplexity\Comet\User Data\*\*Extension Settings\
+      Recursive: true
+    - Name: Comet installed extensions (incl. hidden agent CRXs unpacked)
+      Category: BrowserHistory
+      Path: C:\Users\%user%\AppData\Local\Perplexity\Comet\User Data\*\Extensions\
+      Recursive: true
+    - Name: Comet bundled hidden extensions (agents.crx / perplexity.crx / comet_web_resources.crx)
+      Category: BrowserHistory
+      Path: C:\Program Files\Perplexity\Comet\Application\*\default_apps\
+      Recursive: true
+    - Name: Comet updater forensic log (Omaha req/resp, timestamps, machine info)
+      Category: BrowserHistory
+      Path: C:\Program Files (x86)\Perplexity\CometUpdater\
+      FileMask: 'updater_history.jsonl*'
+    - Name: Comet updater log
+      Category: BrowserHistory
+      Path: C:\Program Files (x86)\Perplexity\CometUpdater\
+      FileMask: updater.log
+    - Name: Comet updater prefs
+      Category: BrowserHistory
+      Path: C:\Program Files (x86)\Perplexity\CometUpdater\
+      FileMask: prefs.json
+    - Name: Comet Crashpad (Sentry minidump metadata)
+      Category: BrowserHistory
+      Path: C:\Users\%user%\AppData\Local\Perplexity\Comet\User Data\Crashpad\
+      Recursive: true

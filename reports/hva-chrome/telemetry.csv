@@ -1,0 +1,11 @@
+run,actor,task,page,reason,canary,ms_on_page,first_interaction_ms,keys,keys_untrusted,pastes,inputs,pointer_moves,pointer_untrusted,clicks_trusted,clicks,moves_before_first_click,name_len,webdriver,focus_order
+S-T1-1,S,T1,/form-hva.html,submit,C0C0N-CANARY-HVA-S-T1-1,2117,2061,0,0,0,"{""insertText"": 3}",1,0,1,1,1,23,True,name>email>notes>BUTTON
+S-T1-2,S,T1,/form-hva.html,submit,C0C0N-CANARY-HVA-S-T1-2,6052,2039,0,0,0,"{""insertText"": 3}",1,0,1,1,1,23,True,name>email>notes>BUTTON
+S-T1-3,S,T1,/form-hva.html,submit,C0C0N-CANARY-HVA-S-T1-3,2166,2064,0,0,0,"{""insertText"": 3}",1,0,1,1,1,23,True,name>email>notes>BUTTON
+,,,/form-hva.html,submit,C0C0N-CANARY-HVA-P-T1-1,3605066,10147,45,0,2,"{""insertFromPaste"": 2, ""deleteContentBackward"": 1, ""insertText"": 18}",496,0,8,8,91,23,False,name>name>email>notes>BUTTON
+CP-T1-1,CP,T1,/form-hva.html,submit,C0C0N-CANARY-HVA-CP-T1-1,24938,5461,13,0,2,"{""insertFromPaste"": 2, ""insertText"": 13}",208,0,6,6,73,24,False,name>name>email>notes>BUTTON
+CA-T1-1,CA,T1,/form-hva.html,submit,C0C0N-CANARY-HVA-CA-T1-1,11409,6881,0,0,0,"{""none:untrusted"": 3}",1,0,1,1,1,24,False,notes>BUTTON
+CP-T1-2,CP,T1,/form-hva.html,submit,C0C0N-CANARY-HVA-CP-T1-2,19274,4725,17,0,2,"{""insertFromPaste"": 2, ""insertText"": 13}",200,0,5,5,30,24,False,name>name>email>notes>BUTTON
+CA-T1-2,CA,T1,/form-hva.html,submit,C0C0N-CANARY-HVA-CA-T1-2,12099,6432,0,0,0,"{""none:untrusted"": 3}",4,0,1,1,4,24,False,notes>BUTTON
+CP-T1-3,CP,T1,/form-hva.html,submit,C0C0N-CANARY-HVA-CP-T1-3,26446,194,12,0,2,"{""insertFromPaste"": 2, ""insertText"": 7}",253,0,5,5,78,24,False,name>name>email>notes>BUTTON
+,,,/form-hva.html,submit,C0C0N-CANARY-HVA-CA-T1-3,14532,7606,0,0,0,"{""none:untrusted"": 3}",1,0,1,1,1,24,False,notes>BUTTON
