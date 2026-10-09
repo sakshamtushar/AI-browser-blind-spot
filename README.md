@@ -4,10 +4,13 @@ Forensics for AI browsers and browser agents: what Perplexity Comet, Brave Leo, 
 
 From the c0c0n 2026 talk *"The AI Browser Blind Spot"* by Saksham Tushar. Everything here comes from lab runs on a Windows 11 VM and a Mac.
 
+**Slides:** [AI-Browser-Blind-Spot-c0c0n-2026.pdf](slides/AI-Browser-Blind-Spot-c0c0n-2026.pdf)
+
 ## Start here
 
 | I want to… | Go to |
 |---|---|
+| Read the talk | [`slides/`](slides/AI-Browser-Blind-Spot-c0c0n-2026.pdf): the full deck as presented, with sources |
 | Collect AI-browser evidence from an endpoint | [`deliverables/`](deliverables): Velociraptor artifact, KAPE targets, extractor |
 | Hunt for AI browsers and agents in my telemetry | [`hunts/`](hunts): ES\|QL, SQLite and shell hunts |
 | See what each product writes to disk | [`lab-findings.md`](lab-findings.md) (Windows) · [`mac-findings.md`](mac-findings.md) (macOS) |
@@ -26,6 +29,7 @@ From the c0c0n 2026 talk *"The AI Browser Blind Spot"* by Saksham Tushar. Everyt
 ## What's in the repo
 
 ```
+slides/         The c0c0n 2026 deck (PDF)
 deliverables/   Collectors: Velociraptor artifact, KAPE targets, Python extractor
 hunts/          Hunt queries (ES|QL, SQLite, shell), with test status
 captures/       Short evidence snippets referenced by the talk
