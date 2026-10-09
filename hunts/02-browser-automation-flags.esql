@@ -1,0 +1,16 @@
+// Hunt 02: browser started with remote-control flags
+// Signal: --remote-debugging-port / --remote-debugging-pipe opens the Chrome DevTools
+// Protocol (CDP), which is how Playwright, Puppeteer and many agents drive a browser.
+// --enable-automation is set by WebDriver and Playwright.
+// Catches automation even when the browser is parented to explorer.exe.
+// Data: Elastic Defend process events. Lab: Comet started with --remote-debugging-port.
+// Query untested as written (the lab hit came from hunt 01's results).
+FROM logs-endpoint.events.process-*
+| WHERE @timestamp > NOW() - 30 days
+  AND event.action == "start"
+  AND process.name IN ("comet.exe", "chrome.exe", "brave.exe", "msedge.exe")
+  AND (process.command_line LIKE "*--remote-debugging*"
+       OR process.command_line LIKE "*--enable-automation*")
+  AND NOT process.command_line LIKE "*--type=*"
+| KEEP @timestamp, host.name, user.name, process.name, process.parent.name, process.command_line
+| SORT @timestamp DESC

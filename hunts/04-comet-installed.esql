@@ -1,0 +1,15 @@
+// Hunt 04: Perplexity Comet on the endpoint
+// Signal: comet.exe or its updater runs, or the updater writes its registry key
+// HKLM\SOFTWARE\WOW6432Node\Perplexity\Update. Comet ships three extensions with
+// debugger access, so it is worth knowing where it is installed.
+// Data: Elastic Defend process and registry events. The key was observed in the lab
+// (registry diff before/after install); this query is untested as written.
+// Note: Elastic Defend records only some registry paths by default. If the second
+// branch never returns, use the process branch or `reg query` the key with your EDR or Velociraptor.
+FROM logs-endpoint.events.process-*, logs-endpoint.events.registry-*
+| WHERE @timestamp > NOW() - 30 days
+  AND (process.name IN ("comet.exe", "CometUpdater.exe", "updater.exe") AND process.executable LIKE "*Perplexity*"
+       OR registry.path LIKE "*\\WOW6432Node\\Perplexity\\Update*")
+| STATS first_seen = MIN(@timestamp), last_seen = MAX(@timestamp), events = COUNT(*)
+    BY host.name, process.executable
+| SORT last_seen DESC

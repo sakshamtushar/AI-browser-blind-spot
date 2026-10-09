@@ -2,7 +2,7 @@
 """extract_ai_browser_artifacts.py — the missing "AI browser conversation & artifact extractor".
 Point it at a Chromium-family User Data dir (Comet / Brave / Chrome / Edge, any OS). Read-only.
 Pulls the AI layer that generic parsers skip: Brave Leo AIChat (schema + cleartext timeline;
---decrypt on the owning host recovers text), Perplexity assistant prompt cache from
+decrypt the text on the owning host with scripts/decrypt_leo.py), Perplexity assistant prompt cache from
 perplexity.ai IndexedDB, AI-extension chrome.storage.local (Claude/ChatGPT/comet-agent/HARPA/Sider),
 Local Storage AI-token keys, and the Gemini glic storage partition. Emits key names + structure,
 redacting string values unless --unsafe. Requires: pip install chromium-reader cryptography.

@@ -1,12 +1,49 @@
-# Deliverables — c0c0n 2026 "The AI Browser Blind Spot"
-Tooling authored for the talk to close the gaps where no public tool covers AI browsers.
-- **Comet.tkape / BraveLeo.tkape** — KAPE targets. No KAPE browser target existed for Comet or Brave-Leo AIChat; these collect the AI layer (Comet: hidden agent extensions, updater_history.jsonl, perplexity.ai IndexedDB prompt cache, storage partitions; Brave: AIChat SQLite + plaintext `user_memories`). Drop into `KAPE\Targets\Browsers\`.
-- **Windows.Applications.AIBrowsers.yaml** — Velociraptor artifact: installed AI browsers, Comet prompt cache (IndexedDB), Brave Leo AIChat + plaintext memories, AI extensions on disk (Claude in Chrome, ChatGPT, Comet's three bundled ones) and their `Local Extension Settings` stores, the Gemini `glic` partition, native-messaging hosts read from the registry (manifest → bridge binary → allowed extensions), and History visits carrying FROM_API (0x08000000). `UploadArtifacts=Y` also pulls Local State, Preferences, History, Web Data, Sessions and the stores above. No such artifact existed in the Velociraptor exchange.
+# Collectors
 
-## Test status (2026-10-08, lab VM thorhq-windows, Velociraptor 0.77.3)
+Collectors for the AI layer that standard browser collection skips. All are read-only.
 
-- **Velociraptor artifact:** `artifacts verify` passes. A local `artifacts collect --args UploadArtifacts=Y` returned rows for every source except `GeminiGlicPartition` (Gemini in Chrome is not enabled on that VM; the partition was observed on macOS). It found the three Comet bundled extensions in two profiles, Claude in Chrome and ChatGPT in Chrome, 36 extension-store files, 17 Comet prompt-cache files, 5 native-messaging hosts, and the three Claude in Chrome agent runs from Phase 3 as FROM_API visits (0x38000000). 98 files uploaded. Results: `reports/velo-test/`.
-- **KAPE targets:** every Path/FileMask was resolved with PowerShell on the same VM and matched files, except Comet `Storage\ext` (not present on that install). The invalid `updater.log|prefs.json` mask was split into two targets. Not yet run through KAPE itself.
-- **extract_ai_browser_artifacts.py:** tested against the Phase 2 collections.
-- **extract_ai_browser_artifacts.py** — cross-platform, read-only "AI browser artifact extractor": point at any Chromium User Data dir; pulls Brave Leo AIChat (timeline/model cleartext), AI-extension chrome.storage.local sensitive keys, perplexity.ai prompt cache, glic partition, and the native-messaging bridge map. Redacts values by default. (`pip install chromium-reader cryptography`.)
-- Decryption reference: `../scripts/chromium_decrypt.py` (v10 dead-box via user-DPAPI; flags v20/App-Bound as needing the elevation service).
+| File | Tool | Collects | Status |
+|---|---|---|---|
+| [`Windows.Applications.AIBrowsers.yaml`](Windows.Applications.AIBrowsers.yaml) | Velociraptor | AI browsers present, Comet prompt cache, Brave Leo chats and memories, AI extensions and their storage, Gemini `glic` partition, native-messaging bridges, History visits with FROM_API | Tested (Velociraptor 0.77.3) |
+| [`Comet.tkape`](Comet.tkape) | KAPE | Comet profiles, prompt cache, bundled agent extensions, updater log | Paths checked |
+| [`BraveLeo.tkape`](BraveLeo.tkape) | KAPE | Brave Leo `AIChat` database, memories, profile | Paths checked |
+| [`extract_ai_browser_artifacts.py`](extract_ai_browser_artifacts.py) | Python | Parses a collected profile: AIChat, prompt cache, extension storage, glic partition | Tested on lab collections |
+
+## Velociraptor
+
+Import the YAML into your server (*View Artifacts → Upload*), or run it locally:
+
+```
+velociraptor.exe --definitions <folder-with-yaml> artifacts collect Custom.Windows.Applications.AIBrowsers --args UploadArtifacts=Y --output out.zip
+```
+
+Each source returns its own table. `UploadArtifacts=Y` also copies the files (Local State, Preferences, History, Web Data, Sessions, prompt cache, extension storage).
+
+## KAPE
+
+Copy both `.tkape` files into `KAPE\Targets\Browsers\`, then:
+
+```
+kape.exe --tsource C: --tdest D:\out --target Comet,BraveLeo
+```
+
+For Comet on Windows, collect **live, before shutdown**: its cookies use App-Bound Encryption (`v20`) and only decrypt on the original machine.
+
+## Extractor
+
+```
+pip install chromium-reader cryptography
+python extract_ai_browser_artifacts.py "<path to User Data>"            # string values redacted
+python extract_ai_browser_artifacts.py "<path to User Data>" --unsafe   # raw values (contains PII)
+```
+
+Works on Chrome, Edge, Brave and Comet profiles from any OS. To decrypt Brave Leo chat text on the owning Windows host, use [`../scripts/decrypt_leo.py`](../scripts/decrypt_leo.py); for cookies, [`../scripts/chromium_decrypt.py`](../scripts/chromium_decrypt.py) (v10 only; it flags v20 as needing the live host).
+
+Generic parsers work too: Hindsight parsed 6,899 records from a Comet profile ([notes](hindsight-comet-demo/README.md)). What they miss is the AI-specific fields, which is what the extractor adds.
+
+## Test notes
+
+Tested 8 Oct 2026 on the lab VM (Windows 11, Comet 153, Brave, Chrome 154):
+
+- **Velociraptor:** `artifacts verify` passes. Every source returned data except `GeminiGlicPartition` (Gemini in Chrome wasn't enabled on that VM; the partition was seen on macOS). It found Comet's three bundled extensions, Claude in Chrome and ChatGPT, 36 extension-storage files, 17 prompt-cache files, 5 native-messaging hosts, and all three Claude in Chrome agent runs as FROM_API visits. Output: [`../reports/velo-test`](../reports/velo-test).
+- **KAPE:** every path and file mask matched files on the VM, except Comet `Storage\ext` (not present on that install). Not yet run through KAPE itself.

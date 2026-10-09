@@ -1,0 +1,20 @@
+// Hunt 05: browser starts an AI vendor's native-messaging host
+// Signal: a desktop-linked agent extension makes the browser launch the vendor's bridge
+// binary as a long-lived child. Shows an agent CAN drive the browser, not what it did.
+// Observed on macOS with ps (2026-10-08): Google Chrome -> Claude.app/.../chrome-native-host,
+// Google Chrome -> "ChatGPT for Chrome" (Codex bundle). Query untested in Elastic.
+// Add your own vendors' host names; list them on a host from the NativeMessagingHosts
+// folders (macOS/Linux) or registry keys (Windows); the Velociraptor artifact reads both on Windows.
+FROM logs-endpoint.events.process-*
+| WHERE @timestamp > NOW() - 30 days
+  AND event.action IN ("start", "exec")
+  AND process.parent.name IN ("chrome.exe", "msedge.exe", "brave.exe", "comet.exe",
+                              "Google Chrome", "Microsoft Edge", "Brave Browser", "Comet")
+  AND (process.executable LIKE "*chrome-native-host*"
+       OR process.executable LIKE "*ChatGPT for Chrome*"
+       OR process.executable LIKE "*Anthropic*"
+       OR process.executable LIKE "*OpenAI*"
+       OR process.executable LIKE "*Perplexity*")
+| STATS first_seen = MIN(@timestamp), last_seen = MAX(@timestamp), starts = COUNT(*)
+    BY host.name, process.parent.name, process.executable
+| SORT last_seen DESC

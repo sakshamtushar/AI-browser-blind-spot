@@ -1,0 +1,14 @@
+// Hunt 01: browser started by a script or shell, not by a person
+// Signal: top-level browser process whose parent is not explorer.exe or another browser.
+// A person launching a browser parents it to explorer.exe. Driver frameworks
+// (Playwright, Puppeteer, Selenium, custom agents) start it from cmd, PowerShell, python, node.
+// Data: Elastic Defend process events (Windows). Tested in the lab, 2026-09-20.
+// Lab hit: comet.exe started by cmd.exe with a comet:// URL.
+// Expect noise from installers, updaters and software that opens links; baseline first.
+FROM logs-endpoint.events.process-*
+| WHERE @timestamp > NOW() - 30 days
+  AND event.action == "start"
+  AND process.name IN ("comet.exe", "chrome.exe", "brave.exe", "msedge.exe")
+  AND process.parent.name NOT IN ("comet.exe", "chrome.exe", "brave.exe", "msedge.exe", "explorer.exe")
+| KEEP @timestamp, host.name, user.name, process.name, process.parent.name, process.command_line
+| SORT @timestamp DESC
